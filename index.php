@@ -10,9 +10,8 @@ error_reporting(E_ALL);
 //2. Подключение файлов системы
 //Подключаем файл Pouter,php
 define('ROOT', dirname(__FILE__));
+require_once(ROOT . '/components/Autoload.php');
 
-require_once(ROOT . '/components/Router.php');
-include_once ROOT . '/components/Db.php';
 ////3. Установка соединения с БД
 //
 ////4. Вызов Router
