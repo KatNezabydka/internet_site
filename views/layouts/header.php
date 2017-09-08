@@ -35,8 +35,8 @@
                 <div class="col-sm-6">
                     <div class="contactinfo">
                         <ul class="nav nav-pills">
-                            <li><a href="#"><i class="fa fa-phone"></i> +38 093 000 11 22</a></li>
-                            <li><a href="#"><i class="fa fa-envelope"></i> zinchenko.us@gmail.com</a></li>
+                            <li><a href="#"><i class="fa fa-phone"></i> +38 096 766 18 68</a></li>
+                            <li><a href="#"><i class="fa fa-envelope"></i> katorif@ukr.net</a></li>
                         </ul>
                     </div>
                 </div>
@@ -57,7 +57,7 @@
             <div class="row">
                 <div class="col-sm-4">
                     <div class="logo pull-left">
-                        <a href="index.html"><img src="/template/images/home/logo.png" alt=""/></a>
+                        <a href="../"><img src="/template/images/home/logo.png" alt=""/></a>
                     </div>
                 </div>
                 <div class="col-sm-8">

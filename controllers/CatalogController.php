@@ -14,7 +14,7 @@ class CatalogController
         $categories = Category::getCategoriesList();
 
         $latestProducts = array();
-        $latestProducts = Product::getLatestProducts(Product::SHOW_BY_DEFAULT, $page);
+        $latestProducts = Product:: getLatestProducts(Product::SHOW_BY_DEFAULT, $page);
 
         //колчество, сколько строк там
         $total = Product::getTotalProducts();
