@@ -1,5 +1,6 @@
 # перенаправление на наш файл index.php
     AddDefaultCharset utf-8
+
     RewriteEngine on
     RewriteBase /
 

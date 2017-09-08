@@ -3,12 +3,11 @@
 //роуты - запросс клиента в строке - и запрос, где узнаем как обрабатывать
 //маршруты
 return array(
+    'product/([0-9]+)' => 'product/view/$1', //actionIndex в ProductController
 
-    'news/([0-9]+)' => 'news/view/$1', //actionView в NewController
-    'news' => 'news/index', // actionIndex в NewController
+    'catalog' => 'catalog/index', //actionIndex в CatalogControllet
+    'category/([0-9]+)' => 'catalog/category/$1', //actionCategory в CatalogController
 
-
-//    'products' => 'product/list', // actionList в ProductControllet
-//    'new/archive' => 'news/archive',
+    '' => 'site/index', //actionIndex в SiteControllet
 );
 

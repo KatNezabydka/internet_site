@@ -1,5 +1,6 @@
 <?php
 
+//
 class Router
 {
     //в массиве хранятся маршруты
@@ -13,7 +14,6 @@ class Router
     }
 
     //Возвращает uri запроса
-
     public function run()
     {
         //Получить строку запроса
@@ -36,9 +36,7 @@ class Router
                 $controllerName = ucfirst($controllerName);
 
                 $actionName = 'action' . ucfirst(array_shift($segments));
-
                 //Все, что дальше - это параметры, которые запишем в переменную $parameters
-
                 $parameters = $segments;
 
                 // Подключить файл класса-контроллера
