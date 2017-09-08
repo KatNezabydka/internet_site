@@ -43,7 +43,7 @@
                                         <h2> <?php echo $product['price']; ?>$</h2>
                                         <p>
                                             <a href="/product/<?php echo $product['id']; ?>">
-                                                <?php echo $product['name']; ?>
+                                                ID:<?php echo $product['id'] ?> <?php echo $product['name']; ?>
                                             </a>
 
                                         </p>
@@ -58,9 +58,10 @@
                             </div>
                         </div>
                     <?php endforeach; ?>
-
                 </div><!--features_items-->
 
+                <!--ПОСТРАНИЧНАЯ НАВИГАЦИЯ-->
+                <?php echo $pagination->get(); ?>
 
             </div>
         </div>
