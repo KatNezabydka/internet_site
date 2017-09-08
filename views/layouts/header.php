@@ -91,7 +91,7 @@
                             <li><a href="/">Главная</a></li>
                             <li class="dropdown"><a href="#">Магазин<i class="fa fa-angle-down"></i></a>
                                 <ul role="menu" class="sub-menu">
-                                    <li><a href="/catalog/">Каталог товаров</a></li>
+                                    <li><a href="/catalog/page-1">Каталог товаров</a></li>
                                     <li><a href="/card/">Корзина</a></li>
                                 </ul>
                             </li>

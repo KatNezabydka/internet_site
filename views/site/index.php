@@ -58,6 +58,7 @@
 
                 </div><!--features_items-->
 
+
                 <div class="recommended_items"><!--recommended_items-->
                     <h2 class="title text-center">Рекомендуемые товары</h2>
 

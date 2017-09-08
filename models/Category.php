@@ -18,7 +18,6 @@ class Category
             $categoryList[$i]['name'] = $row['name'];
             $i++;
         }
-
         return $categoryList;
     }
 

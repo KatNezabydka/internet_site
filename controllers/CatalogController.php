@@ -8,13 +8,23 @@ include_once ROOT . '/components/Pagination.php';
 class CatalogController
 {
 
-    public function actionIndex()
+    public function actionIndex($page = 1)
     {
         $categories = array();
         $categories = Category::getCategoriesList();
 
         $latestProducts = array();
-        $latestProducts = Product::getLatestProducts(6);
+        $latestProducts = Product::getLatestProducts(Product::SHOW_BY_DEFAULT, $page);
+
+        //колчество, сколько строк там
+        $total = Product::getTotalProducts();
+
+        //Создаем объект Pagination - постраничная навигация
+        //1)общее количество товаров конкретной категории
+        //2) номер страницы, который к нам попадает
+        //3) константа - количество товаров на странице
+        //4) ключ, который фигурирует в нашем url
+        $pagination = new Pagination($total, $page, Product::SHOW_BY_DEFAULT, 'page-');
 
         require_once(ROOT . '/views/catalog/index.php');
 

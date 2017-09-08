@@ -57,7 +57,8 @@
                     <?php endforeach; ?>
 
                 </div><!--features_items-->
-
+                <!--ПОСТРАНИЧНАЯ НАВИГАЦИЯ-->
+                <?php echo $pagination->get(); ?>
 
             </div>
         </div>
