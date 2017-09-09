@@ -7,6 +7,8 @@
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
+session_start();
+
 //2. Подключение файлов системы
 //Подключаем файл Pouter,php
 define('ROOT', dirname(__FILE__));
