@@ -3,17 +3,70 @@
 
 class Db
 {
-    public static function getConnection()
+
+//    public static function getConnection()
+//    {
+//        $paramsPath = ROOT . '/config/db_params.php';
+//        $params = include($paramsPath);
+//
+//        $dsn = "mysql:host={$params['host']};dbname={$params['dbname']}";
+//        $db = new PDO($dsn, $params['user'], $params['password']);
+//        //убирает проблему с кодировкой
+//        $db->exec("set names utf8");
+//        return $db;
+//    }
+
+
+    public $db;
+
+    static private $_ins = NULL;
+
+
+    private function __construct()
     {
-        $paramsPath = ROOT . '/config/db_params.php';
-        $params = include($paramsPath);
+
+        $params = include(ROOT . '/config/db_params.php');
 
         $dsn = "mysql:host={$params['host']};dbname={$params['dbname']}";
-        $db = new PDO($dsn, $params['user'], $params['password']);
+        $this->db = new PDO($dsn, $params['user'], $params['password']);
         //убирает проблему с кодировкой
-        $db->exec("set names utf8");
-        return $db;
+        $this->db->exec("set names utf8");
+
+    }
+
+    static public function getConnection()
+    {
+
+        if (self::$_ins instanceof self) {
+
+            return self::$_ins;
+
+        }
+
+        return self::$_ins = new self;
+
+    }
+
+
+    private function __wakeup()
+    {
+
+    }
+
+    private function __clone()
+    {
+
+
     }
 
 
 }
+
+
+
+
+
+
+
+
+

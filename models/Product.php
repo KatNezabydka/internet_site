@@ -12,7 +12,7 @@ class Product
         $page = intval($page);
         $offset = ($page - 1) * self::SHOW_BY_DEFAULT;
 
-        $db = Db::getConnection();
+        $db = Db::getConnection()->db;
         $productsList = array();
 
         $result = $db->query('SELECT id, name, price, image, is_new FROM product WHERE status = "1" ORDER BY id DESC LIMIT ' . $count . ' OFFSET ' . $offset);
@@ -38,7 +38,7 @@ class Product
         $page = intval($page);
         $offset = ($page - 1) * self::SHOW_BY_DEFAULT;
 
-        $db = Db::getConnection();
+        $db = Db::getConnection()->db;
         $productsList = array();
 
         $result = $db->query('SELECT id, name, price, image, is_new FROM product WHERE status = "1"  AND is_new="1" ORDER BY id DESC LIMIT ' . $count . ' OFFSET ' . $offset);
@@ -66,7 +66,7 @@ class Product
             $page = intval($page);
             $offset = ($page - 1) * self::SHOW_BY_DEFAULT;
 
-            $db = Db::getConnection();
+            $db = Db::getConnection()->db;
             $products = array();
             $result = $db->query('SELECT id, name, price, image, is_new 
                                             FROM product WHERE `status` = "1" AND category_id =' . $categoryId . ' ORDER BY id DESC LIMIT ' . self::SHOW_BY_DEFAULT . ' OFFSET ' . $offset);
@@ -92,7 +92,7 @@ class Product
         $id = intval($productId);
 
         if ($id) {
-            $db = Db::getConnection();
+            $db = Db::getConnection()->db;
 
             $result = $db->query('SELECT * FROM product WHERE id=' . $id);
             $result->setFetchMode(PDO::FETCH_ASSOC);
@@ -106,7 +106,7 @@ class Product
     {
         $products = array();
 
-        $db = Db::getConnection();
+        $db = Db::getConnection()->db;
 
         $idsString = implode(',', $idsArray);
         //IN - где id будет принадлежать определенному списку идентификаторов
@@ -134,7 +134,7 @@ class Product
     // Returns total products
     public static function getTotalProductsInCategory($categoryId)
     {
-        $db = Db::getConnection();
+        $db = Db::getConnection()->db;
 
         $result = $db->query('SELECT count(id) AS count FROM product WHERE status="1" AND category_id =' . $categoryId);
         $result->setFetchMode(PDO::FETCH_ASSOC);
@@ -146,7 +146,7 @@ class Product
 
     public static function getTotalProducts()
     {
-        $db = Db::getConnection();
+        $db = Db::getConnection()->db;
 
         $result = $db->query('SELECT count(id) AS count FROM product WHERE status="1"');
         $result->setFetchMode(PDO::FETCH_ASSOC);

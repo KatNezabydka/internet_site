@@ -1,28 +1,55 @@
 <?php
-//$password1 = '111111';
-//$password2 = '111111';
-//
-//$hash_password1 = password_hash($password1, PASSWORD_BCRYPT);
-//echo '<br>1   -  ' . $hash_password1;
-//$hash_password2 = password_verify($password1,$hash_password1);
-//echo '<br> 2  ---';
-//var_dump( $hash_password2);
-/**
- * Данный код замерит скорость выполнения операции хешитрования для вашего сервера
- * с разными значениями алгоритмической сложности для определения максимального
- * его значения, не приводящего к деградации производительности. Хорошее базовое
- * значение лежит в диапазоне 8-10, но если ваш сервер достаточно мощный, то можно
- * задать и больше. Данный скрипт ищет максимальное значение, при котором
- * хеширование уложится в 50 миллисекунд.
- */
-$timeTarget = 0.05; // 50 миллисекунд.
 
-$cost = 8;
-do {
-    $cost++;
-    $start = microtime(true);
-    password_hash("test", PASSWORD_BCRYPT, ["cost" => $cost]);
-    $end = microtime(true);
-} while (($end - $start) < $timeTarget);
+class db
+{
 
-echo "Оптимальная стоимость: " . $cost . "\n";
+
+    public $db;
+
+
+    static private $_ins = NULL;
+
+    static public function get_instance()
+    {
+
+        if (self::$_ins instanceof self) {
+
+            return self::$_ins;
+
+        }
+
+        return self::$_ins = new self;
+
+    }
+
+
+    public function __construct()
+    {
+
+        echo "<h1>Соединение с базой данных</h1>";
+
+        $this->db = new mysqli('localhost', 'root', '', 'super_mag');
+
+
+        if ($this->db->connect_error) {
+
+            throw new DbException("Ошибка соединения : ");
+
+        }
+
+
+        $this->db->query("SET NAMES 'UTF8'");
+
+    }
+
+
+    private function __clone()
+    {
+
+
+    }
+
+
+}
+
+$obj1 = db::get_instance();
