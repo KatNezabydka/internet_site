@@ -32,36 +32,54 @@
                                 <tr>
                                     <th>Код товара</th>
                                     <th>Название</th>
-                                    <th>Количество, шт</th>
                                     <th>Стомость, грн</th>
+                                    <th>Количество, шт</th>
+                                    <th>Удалить</th>
                                 </tr>
                                 <?php foreach ($products as $product): ?>
-                                    <tr>
+                                    <tr id="row-<?php echo $product['id'] ?>">
                                         <td><?php echo $product['code']; ?></td>
                                         <td>
                                             <a href="/product/<?php echo $product['id']; ?>">
                                                 <?php echo $product['name']; ?>
                                             </a>
                                         </td>
-                                        <td><?php echo $productsInCart[$product['id']]; ?></td>
                                         <td><?php echo $product['price']; ?></td>
+                                        <td><?php echo $productsInCart[$product['id']]; ?></td>
+                                        <td>
+                                            <a href="/cart/" data-id="<?php echo $product['id']; ?>"
+                                               class=" btn-default checkout delete-from-cart"><i
+                                                        class="fa fa-times"></i>
+                                            </a>
+
+                                        </td>
                                     </tr>
                                 <?php endforeach; ?>
                                 <tr>
-                                    <td colspan="3">Общая стоимость:</td>
+                                    <td colspan="4">Общая стоимость, грн:</td>
                                     <td><?php echo $totalPrice; ?></td>
                                 </tr>
 
                             </table>
+
+                            <a class=" btn-default checkout" href="/cart/checkout"><i class="fa fa-shopping-cart"></i>
+                                Оформить заказ</a>
                         <?php else: ?>
                             <p>Корзина пуста</p>
-                        <?php endif; ?>
 
+                            <a class="btn btn-default checkout" href="/"><i class="fa fa-shopping-cart"></i> Вернуться к
+                                покупкам</a>
+                        <?php endif; ?>
                     </div>
 
+
                 </div>
+
             </div>
+            <br/><br/>
         </div>
+
     </section>
+
 
 <?php include ROOT . '/views/layouts/footer.php'; ?>

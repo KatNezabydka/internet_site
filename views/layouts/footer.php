@@ -28,8 +28,21 @@
             $.post("/cart/addAjax/" + id, {}, function (data) {
                 $("#cart-count").html(data);
             });
-            return false;
         });
+        //нажатие на кнопку - удалить из корзины
+        $(".delete-from-cart").click(function () {
+            //data-id это идентификатор товара, который нужно удалить из корзины
+            var id = $(this).attr("data-id");
+            //post - адресс, параметры, и функция, который обрабатывает результат
+            //в data поступает количество товара в корзине и помещаем его в счетчик корзины
+            //удаляем нужную строку из таблицы
+            $.post("/cart/deleteAjax/" + id, {}, function (data) {
+                $("#cart-count").html(data);
+                $("#row-" + id).remove();
+            });
+
+        });
+        return false;
     });
 </script>
 

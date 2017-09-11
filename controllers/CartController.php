@@ -4,15 +4,23 @@
 class CartController
 {
     //Обработка ассинхронного запроса
-    public function actionAdd($id)
+//    public function actionAdd($id)
+//    {
+//        //Добавляем товар в корзину
+//        Cart::addProduct($id);
+//
+//        // Возвращаем пользователя на страницу с которой он пришел
+//        $referrer = $_SERVER['HTTP_REFERER'];
+//        header("Location: $referrer");
+//        exit();
+//    }
+    //Удаление товара из корзины
+    public function actionDeleteAjax($id)
     {
-        //Добавляем товар в корзину
-        Cart::addProduct($id);
+        // Удалить товар из корзины
+        echo Cart::deleteProduct($id);
 
-        // Возвращаем пользователя на страницу с которой он пришел
-        $referrer = $_SERVER['HTTP_REFERER'];
-        header("Location: $referrer");
-        exit();
+        return true;
     }
 
     //Обработка ассинхронного запроса AJAX

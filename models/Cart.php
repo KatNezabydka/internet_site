@@ -32,6 +32,24 @@ class Cart
 
     }
 
+    // Удвление товара из корзины (сессии)
+    //Возвращает количество товара, которое находится на данный момент в корзине
+    public static function deleteProduct($id)
+    {
+        $id = intval($id);
+
+        // Если в корзине уже есть товары (они хранятся в сессии)
+        if (isset($_SESSION['products'])) {
+            if (array_key_exists($id, $_SESSION['products'])) {
+                $_SESSION['products'][$id]--;
+            }
+            if ($_SESSION['products'][$id] === 0) unset($_SESSION['products'][$id]);
+        }
+
+        return self::countItems();
+
+    }
+
     //Считает количество товара в сессии
     public static function countItems()
     {
