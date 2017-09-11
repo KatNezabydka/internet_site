@@ -12,10 +12,10 @@ class UserController
         $password = '';
 
         if (isset($_POST['submit'])) {
-            $name = $_POST['name'];
-            $surname = $_POST['surname'];
-            $email = $_POST['email'];
-            $password = $_POST['password'];
+            $name = strip_tags($_POST['name']);
+            $surname = strip_tags($_POST['surname']);
+            $email = strip_tags($_POST['email']);
+            $password = strip_tags($_POST['password']);
 
             $errors = false;
 

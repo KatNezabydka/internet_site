@@ -32,9 +32,9 @@ class CabinetController
         $result = false;
 
         if (isset($_POST['submit'])) {
-            $name = $_POST['name'];
-            $surname = $_POST['surname'];
-            $password = $_POST['password'];
+            $name = strip_tags($_POST['name']);
+            $surname = strip_tags($_POST['surname']);
+            $password = strip_tags($_POST['password']);
 
             $errors = false;
 

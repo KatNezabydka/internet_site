@@ -47,7 +47,8 @@
                                             </a>
 
                                         </p>
-                                        <a href="#" class="btn btn-default add-to-cart"><i
+                                        <a href="#" data-id="<?php echo $product['id']; ?>"
+                                           class="btn btn-default add-to-cart"><i
                                                     class="fa fa-shopping-cart"></i>В
                                             корзину</a>
                                     </div>
