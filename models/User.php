@@ -28,6 +28,16 @@ class User
         return false;
     }
 
+    // Проверяем имя - не меньше, чем 10 символа
+    public static function checkPhone($phone)
+    {
+        if (strlen($phone) >= 10) {
+            return true;
+        }
+        return false;
+    }
+
+
     // Проверяем фамилию - не меньше, чем 2 символа
     public static function checkSurname($surname)
     {

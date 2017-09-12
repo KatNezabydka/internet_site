@@ -37,7 +37,7 @@
 
                                     <div class="productinfo text-center">
                                         <img src="/template/images/shop/<?php echo $product['image']; ?>" alt=""/>
-                                        <h2> <?php echo $product['price']; ?>$</h2>
+                                        <h2> <?php echo $product['price']; ?>грн</h2>
                                         <p>
                                             <a href="/product/<?php echo $product['id']; ?>">
                                                 <?php echo $product['name']; ?>

@@ -40,7 +40,7 @@
                                 <h2><?php echo $product['name']; ?></h2>
                                 <p>Код товара: <?php echo $product['code']; ?></p>
                                 <span>
-                                            <span>US $<?php echo $product['price']; ?></span>
+                                            <span>UA грн<?php echo $product['price']; ?></span>
                                             <label>Количество:</label>
                                             <input type="text" value="3"/>
                                             <button type="button" class="btn btn-fefault cart">

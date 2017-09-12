@@ -69,9 +69,9 @@ class Cart
     {
         //Получаем товары из сессии
         $productsInCart = self::getProducts();
+        $total = 0;
         //если они есть, подсчитываем общую стоимость товаров
         if ($productsInCart) {
-            $total = 0;
             foreach ($products as $item) {
                 $total += $item['price'] * $productsInCart[$item['id']];
             }
@@ -85,6 +85,13 @@ class Cart
             return $_SESSION['products'];
         }
         return false;
+    }
+
+    public static function clear()
+    {
+        if (isset($_SESSION['products'])) {
+            unset ($_SESSION['products']);
+        }
     }
 
 }
