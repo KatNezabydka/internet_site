@@ -5,6 +5,9 @@ class CabinetController
 
     public function actionIndex()
     {
+        if (AdminBase::checkAdmin()) {
+            header("Location: /admin/");
+        }
         //идентификатор конкретного пользователя
         $userId = User::checkLogged();
 
