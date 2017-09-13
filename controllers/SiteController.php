@@ -5,11 +5,15 @@ class SiteController
 
     public function actionIndex()
     {
-        $categories = array();
+        // категории слева
         $categories = Category::getCategoriesList();
 
-        $latestProducts = array();
+        // список продуктов на главной странице
         $latestProducts = Product::getLatestNewProducts(6);
+
+        // слайды
+        $sliderProducts = Product::getRecommendedProducts();
+//        $countSlide = intval(Product::getSliderCount());
 
         require_once(ROOT . '/views/site/index.php');
 

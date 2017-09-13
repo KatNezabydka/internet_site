@@ -1,6 +1,5 @@
 <?php
 
-
 class Db
 {
 
@@ -10,17 +9,20 @@ class Db
 //        $params = include($paramsPath);
 //
 //        $dsn = "mysql:host={$params['host']};dbname={$params['dbname']}";
-//        $db = new PDO($dsn, $params['user'], $params['password']);
-//        //убирает проблему с кодировкой
+//        $db = new PDO($dsn, $params['user'], $params['password'], $params['options']);
 //        $db->exec("set names utf8");
 //        return $db;
 //    }
 
+    private $db;
 
-    public $db;
+    static private $_instance = NULL;
 
-    static private $_ins = NULL;
 
+    public static function getConnection()
+    {
+        return self::getInstance()->db;
+    }
 
     private function __construct()
     {
@@ -28,45 +30,40 @@ class Db
         $params = include(ROOT . '/config/db_params.php');
 
         $dsn = "mysql:host={$params['host']};dbname={$params['dbname']}";
-        $this->db = new PDO($dsn, $params['user'], $params['password']);
-        //убирает проблему с кодировкой
-        $this->db->exec("set names utf8");
+
+        try { // проверка на ошибку при подключении к базе данных
+            $this->db = new PDO($dsn, $params['user'], $params['password']);
+            //убирает проблему с кодировкой
+            $this->db->exec("set names utf8");
+        } catch (Exception $e) {
+            header("Location: /errors");
+            exit();
+//            $error = $e->getMessage() . ' | ' . $e->getCode();
+        }
 
     }
 
-    static public function getConnection()
+    static public function getInstance()
     {
 
-        if (self::$_ins instanceof self) {
+        if (self::$_instance instanceof self) {
 
-            return self::$_ins;
+            return self::$_instance;
 
         }
 
-        return self::$_ins = new self;
+        return self::$_instance = new self;
 
     }
 
 
     private function __wakeup()
     {
-
     }
 
     private function __clone()
     {
-
-
     }
 
 
 }
-
-
-
-
-
-
-
-
-

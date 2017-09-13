@@ -8,7 +8,7 @@ class Order
     {
         $products = json_encode($products);
 
-        $db = Db::getConnection()->db;
+        $db = Db::getConnection();
 
         $sql = 'INSERT INTO product_order (user_name, user_phone, user_comment, user_id, products) VALUES (:user_name, :user_phone, :user_comment, :user_id, :products)';
 

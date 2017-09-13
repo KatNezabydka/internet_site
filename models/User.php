@@ -5,7 +5,7 @@ class User
     public static function register($name, $surname, $email, $password)
     {
 
-        $db = Db::getConnection()->db;
+        $db = Db::getConnection();
 
         $sql = 'INSERT INTO user (name, surname, email, password) VALUES (:name, :surname, :email, :password)';
         $hash_password = password_hash($password, PASSWORD_BCRYPT);
@@ -69,7 +69,7 @@ class User
     public static function checkEmailExists($email)
     {
 
-        $db = Db::getConnection()->db;
+        $db = Db::getConnection();
 
         $sql = 'SELECT COUNT(*) FROM user WHERE email = :email';
 
@@ -87,7 +87,7 @@ class User
     public static function edit($id, $name, $surname, $password)
     {
 
-        $db = Db::getConnection()->db;
+        $db = Db::getConnection();
 
         $sql = 'UPDATE user
                 SET name = :name, surname = :surname, password = :password
@@ -106,7 +106,7 @@ class User
     //Проверяем существует ли пользователь с заданными $email и $password
     public static function checkUserData($email, $password)
     {
-        $db = Db::getConnection()->db;
+        $db = Db::getConnection();
 
         $sql = 'SELECT * FROM user WHERE email = :email';
         $result = $db->prepare($sql);
@@ -152,7 +152,7 @@ class User
     {
 
         if ($id) {
-            $db = Db::getConnection()->db;
+            $db = Db::getConnection();
             $sql = 'SELECT * FROM user WHERE id = :id';
 
             $result = $db->prepare($sql);

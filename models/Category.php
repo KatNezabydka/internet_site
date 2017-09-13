@@ -6,7 +6,7 @@ class Category
     public static function getCategoriesList()
     {
 
-        $db = Db::getConnection()->db;
+        $db = Db::getConnection();
 
         $categoryList = array();
 
